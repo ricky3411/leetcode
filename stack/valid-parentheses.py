@@ -3,6 +3,9 @@ class Solution:
 
         if len(s) == 0:
             return True
+        
+        if len(s) == 1:
+            return False
 
         map = {"}":"{", "]":"[", ")":"("}
         stack = []
@@ -11,7 +14,6 @@ class Solution:
         for i in s:
             if i in '([{':
                 stack.append(i)
-                print(stack)
             
             else:
 
