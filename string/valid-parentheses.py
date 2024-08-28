@@ -18,10 +18,10 @@ class Solution:
                 if stack: 
                     pop = stack.pop()
             
-                if map[i] == pop:
-                    continue
-                else:
-                    return False
+                    if map[i] == pop:
+                        continue
+                    else:
+                        return False
         
         if len(stack) == 0:
             return True
