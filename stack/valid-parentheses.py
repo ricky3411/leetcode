@@ -9,7 +9,7 @@ class Solution:
 
 
         for i in s:
-            if i in '([{':
+            if stack and i in '([{':
                 stack.append(i)
                 print(stack)
             
