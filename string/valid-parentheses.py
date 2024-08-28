@@ -9,12 +9,14 @@ class Solution:
 
 
         for i in s:
-            if stack and i in '([{':
+            if i in '([{':
                 stack.append(i)
                 print(stack)
             
             else:
-                pop = stack.pop()
+
+                if stack: 
+                    pop = stack.pop()
             
                 if map[i] == pop:
                     continue
