@@ -3,9 +3,6 @@ class Solution:
 
         if len(s) == 0:
             return True
-        
-        if len(s) == 1:
-            return False
 
         map = {"}":"{", "]":"[", ")":"("}
         stack = []
@@ -17,13 +14,12 @@ class Solution:
             
             else:
 
-                if stack: 
-                    pop = stack.pop()
+                if not stack:
+                    return False
+
+                pop = stack.pop()
             
-                    if map[i] == pop:
-                        continue
-                    else:
-                        return False
+                if map[i] != pop:
+                    return False
         
-        if len(stack) == 0:
-            return True
+        return len(stack) == 0
