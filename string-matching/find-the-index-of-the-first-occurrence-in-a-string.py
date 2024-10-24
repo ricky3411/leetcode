@@ -21,5 +21,5 @@ class Solution:
             if haystack[i] == needle[0]:
               #  check = i
                 if haystack[i:r+i] == needle:
-                    return check
+                    return i
         return -1
