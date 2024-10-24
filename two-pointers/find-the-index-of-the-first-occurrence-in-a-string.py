@@ -15,9 +15,11 @@ class Solution:
         r = len(needle)
         check = 0
 
+        print(len(haystack))
+
         for i in range(len(haystack)):
             if haystack[i] == needle[0]:
                 check = i
-                if haystack[i:r] == needle:
+                if haystack[i:r+i] == needle:
                     return check
         return -1
