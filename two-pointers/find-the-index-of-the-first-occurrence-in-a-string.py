@@ -13,13 +13,13 @@ class Solution:
 
         l = 0
         r = len(needle)
-        check = 0
+       # check = 0
 
         print(len(haystack))
 
         for i in range(len(haystack)):
             if haystack[i] == needle[0]:
-                check = i
+              #  check = i
                 if haystack[i:r+i] == needle:
                     return check
         return -1
