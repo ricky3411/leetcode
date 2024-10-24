@@ -3,8 +3,8 @@ class Solution:
         l = 0
         r = len(needle)
 
-        for i in range(len(haystack)):
+        for i in range(len(haystack)-r+1):
             if haystack[i] == needle[0]:
-                if haystack[i:r] == needle:
+                if haystack[i:r+i] == needle:
                     return i
         return -1
