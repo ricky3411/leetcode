@@ -1,9 +1,12 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
 
-       # for i in range(len(haystack))
+        nlen = len(needle)
+        s = 0
+        check = 0
 
-       for i in range(len(haystack)):
+        for i, k in enumerate(haystack):
             if needle in haystack:
                 return i
-       return -1        
+    
+        return -1
