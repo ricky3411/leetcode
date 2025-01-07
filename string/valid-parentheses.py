@@ -7,8 +7,6 @@ class Solution:
         closeToOpen = {")":"(", "]":"[", "}":"{"}
         stack = []
 
-        # s = "()[]{}"
-
         for c in s:
 
             #checking if it is a closing bracket: ),],}
@@ -17,6 +15,8 @@ class Solution:
                     stack.pop()
                 else:
                     return False
+            
+            #opening bracket        
             else:
                 stack.append(c)
             
