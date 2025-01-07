@@ -1,25 +1,22 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
+
         if len(s) == 0:
             return True
 
-        map = {"}":"{", "]":"[", ")":"("}
-        stack = []
+       # mapr = {")":"(", "]":"[", "}":"{"}
 
+        map = {"(":")", "[":"]", "{":"}"}
 
-        for i in s:
-            if i in '([{':
-                stack.append(i)
-            
-            else:
+        l = int(len(s)/2) -1
+        r = int((len(s)-1)/2) +1
 
-                if not stack:
-                    return False
-
-                pop = stack.pop()
-            
-                if map[i] != pop:
-                    return False
+        if s[r] == map[s[l]]:
+            l-=1
+            r+=1
+        else:
+            return False 
         
-        return len(stack) == 0
+        return True
+            
