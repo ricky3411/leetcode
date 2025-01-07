@@ -1,27 +1,23 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
-        if len(s) == 0:
-            return True
-        
-        if len(s) == 1:
-            return False
-
         if len(s) % 2 != 0:
             return False
 
-       # mapr = {")":"(", "]":"[", "}":"{"}
+        closeToOpen = {")":"(", "]":"[", "}":"{"}
+        stack = []
 
-        map = {"(":")", "[":"]", "{":"}"}
+        # s = "()[]{}"
 
-        l = int(len(s)/2) -1
-        r = int((len(s)-1)/2) +1
+        for c in s:
 
-        if l >= 0 and r <= len(s):
-            if s[l] in map and s[r] == map[s[l]]:
-                l-=1
-                r+=1
+            #checking if it is a closing bracket: ),],}
+            if c in closeToOpen:
+                if stack and stack[-1] == closeToOpen[c]:
+                    stack.pop()
+                else:
+                    return False
             else:
-                return False 
+                stack.append(c)
             
-        return True
+        return True if not stack else False
