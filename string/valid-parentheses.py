@@ -1,11 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
-
         if len(s) == 0:
             return True
         
         if len(s) == 1:
+            return False
+
+        if len(s) % 2 != 0:
             return False
 
        # mapr = {")":"(", "]":"[", "}":"{"}
