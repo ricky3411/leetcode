@@ -1,23 +1,28 @@
 class Solution:
     def isValid(self, s: str) -> bool:
 
-        if len(s) % 2 != 0:
-            return False
+        if len(s) == 0:
+            return True
 
-        closeToOpen = {")":"(", "]":"[", "}":"{"}
+        map = {"}":"{", "]":"[", ")":"("}
         stack = []
 
-        for c in s:
 
-            #checking if it is a closing bracket: ),],}
-            if c in closeToOpen:
-                if stack and stack[-1] == closeToOpen[c]:
-                    stack.pop()
-                else:
-                    return False
+        for i in s:
+            if i in '([{':
+                stack.append(i)
             
-            #opening bracket        
+            #closing bracket
             else:
-                stack.append(c)
+
+                #checking if the stack is empty, if it is return false because it should not be since 
+                #I just encountered a closing bracket that needs to match up with an opening one
+                if not stack:
+                    return False
+
+                pop = stack.pop()
             
-        return True if not stack else False
+                if map[i] != pop:
+                    return False
+        
+        return len(stack) == 0
