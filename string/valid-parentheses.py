@@ -4,6 +4,9 @@ class Solution:
 
         if len(s) == 0:
             return True
+        
+        if len(s) == 1:
+            return False
 
        # mapr = {")":"(", "]":"[", "}":"{"}
 
