@@ -1,24 +1,17 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-
-        if s == "":
-            return True 
-
-        newS = []
-
-        for c in s:
-            if c.isalnum():
-                newS.append(c.lower())
-
-        print(newS)
-
-        newS = ''.join(newS)
-        
-        return newS == newS[::-1]
-            
-        
+        pass
 
 
 
+
+
+    def alnum(self, c):
+        return (ord('A') <= order(c) <= ord('Z') or
+                ord('a') <= order(c) <= ord('z') or
+                ord(0) <= order(c) <= ord(9))
+
+    
+    print(self.alnum('c'))
 
         
