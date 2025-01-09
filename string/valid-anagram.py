@@ -1,19 +1,21 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
 
-        word_s = {}
-        word_t = {}
-
-        for key, val in enumerate(s):
-            if val not in word_s:
-                word_s[val] = 1
-            else:
-                word_s[val] += 1
-
-        for key, val in enumerate(t):
-            if val not in word_t:
-                word_t[val] = 1
-            else:
-                word_t[val] += 1
+        count = [0] * 26
         
-        return word_s == word_t
+        # Count the frequency of characters in string s
+        for x in s:
+            count[ord(x) - ord('a')] += 1
+        
+        print(count)
+        
+        # Decrement the frequency of characters in string t
+        for x in t:
+            count[ord(x) - ord('a')] -= 1
+        
+        # Check if any character has non-zero frequency
+        for val in count:
+            if val != 0:
+                return False
+        
+        return True
