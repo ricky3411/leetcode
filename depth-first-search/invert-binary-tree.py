@@ -12,14 +12,17 @@ class Solution:
 
         stack = [root]
 
+
         while stack:
+
             node = stack.pop()
 
-            node.right, node.left = node.left, node.right
+            node.left, node.right = node.right, node.left
 
             if node.left:
                 stack.append(node.left)
+            
             if node.right:
                 stack.append(node.right)
-        
+
         return root
