@@ -1,23 +1,26 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        
-        colorized = [[0] * len(image[0]) for _ in range(len(image))]
-        
-        self.colorize(image, colorized, sr, sc, image[sr][sc], color)
 
+        #retrieve the current color
+        curr_color = image[sr][sc]
+
+        #checks to see if it is the same, if it is, then return original image
+        if curr_color == color:
+            return image
+
+        #start dfs
+        def dfs(image, sr, sc):
+            #change old color location to new color 
+            image[sr][sc] = color
+
+            list = [[sr-1, sc], [sr+1, sc], [sr, sc+1], [sr, sc-1]]
+
+            for row, col in list:
+                if 0 <= row and 0 <= col and row < len(image) and col < len(image[0]) and image[row][col] == curr_color:
+                    dfs(image, row, col)
+
+        #calling dfs on the original image, and starting point 
+        dfs(image, sr, sc)
+
+        #returning original image
         return image
-    
-    def colorize(self, image, colorized, sr, sc, oldColor, newColor):
-
-        if sr >= 0 and sr < len(image) and sc >= 0 and sc < len(image[0]):
-            if image[sr][sc] == oldColor and colorized[sr][sc] == 0:
-
-                image[sr][sc] = newColor
-                colorized[sr][sc] = 1
-
-                self.colorize(image, colorized, sr-1, sc, oldColor, newColor)
-                self.colorize(image, colorized, sr, sc+1, oldColor, newColor)
-                self.colorize(image, colorized, sr+1, sc, oldColor, newColor)
-                self.colorize(image, colorized, sr, sc-1, oldColor, newColor)
-
-
